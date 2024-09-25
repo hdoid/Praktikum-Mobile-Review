@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 3, 77, 15)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 146, 89, 4)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Dio Dharmaesa 053'),
+      home: const MyHomePage(title: 'Sinau Listview (25 Sept 2024)'),
     );
   }
 }
@@ -30,70 +30,91 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<String> titles = ["Bike", "Boat", "Bus", "Car", "Truck", "Airplane", "Train", "Submarine"];
 
   @override
   Widget build(BuildContext context) {
+
+    List icons = [
+      Icons.directions_bike,
+      Icons.directions_boat, 
+      Icons.directions_bus,
+      Icons.directions_car,
+      Icons.fire_truck,
+      Icons.airplanemode_active,
+      Icons.train,
+      Icons.water
+      ];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: 
-      // Container(
-      //   width: 200,
-      //   height: 200,
-      //   padding: const EdgeInsets.all(14),
-      //   margin: const EdgeInsets.all(14),
-      //   decoration: BoxDecoration(
-      //     color: Colors.black,
-      //     border: Border.all(
-      //       width: 4,
-      //       color: Colors.yellowAccent,
-      //     )
-      //   ),
-      //   alignment: Alignment.bottomLeft,
-      //   child: const Center(
-      //     child: Text("Hello World!",
-      //     style: TextStyle(
-      //         fontSize: 20,
-      //         fontWeight: FontWeight.bold,
-      //         color: Colors.redAccent
+      
+      body: ListView.builder(
+        itemCount: titles.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: Icon(icons[index]),
+              title: Text(titles[index]),
+              onTap:() {
+                setState(() {
+                  titles.removeAt(index);
+                });
+              },
+            )
+          );
+        }
+      ),
+
+      //   children: const [
+      //     ListTile(
+      //       leading: Icon(Icons.sunny),
+      //       title: Text("Sun"),
+      //       trailing: Icon(Icons.keyboard_arrow_right),
+      //     ),
+      //     ListTile(
+      //       leading: Icon(Icons.brightness_3),
+      //       title: Text("Moon"),
+      //       trailing: Icon(Icons.keyboard_arrow_right),
+      //     ),
+      //     ListTile(
+      //       leading: Icon(Icons.star),
+      //       title: Text("Star"),
+      //       trailing: Icon(Icons.keyboard_arrow_right),
+      //     ),
+      //     ListTile(
+      //       leading: CircleAvatar(
+      //         backgroundImage: AssetImage("ikn.jpeg"),
       //       ),
+      //       title: Text("IKN"),
+      //       trailing: Icon(Icons.keyboard_arrow_right),
       //     )
-      //   ),
-      // ) 
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-        Column(
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.black,
-              ),
-            ),
-          ],
-        ),
-        Container(
-          width: 100,
-          height: 100,
-          color: Colors.redAccent,
-          ),
-        Container(
-          width: 100,
-          height: 100,
-          color: Colors.yellowAccent,
-          ),
-          Container(
-          width: 100,
-          height: 100,
-          color: Colors.blueAccent,
-          )
-        ],
-      )
+      //   ],
+      // ),
+
+  // body: GridView(
+  //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+  //   crossAxisCount: 3,
+  //   ),
+  //     children: [
+  //       Container(  
+  //         width: 100,
+  //         height: 250,
+  //         margin: const EdgeInsets.only(bottom: 10),
+  //         color: Colors.red,
+  //         child: const Image(image: AssetImage("ikn.jpeg"))
+  //       ),
+  //       Container(
+  //         width: 100,
+  //         height: 250,
+  //         margin: const EdgeInsets.only(bottom: 10),
+  //         color: Colors.blue,
+  //       ),
+  //       ],
+  //     ),
     );
   }
 }
